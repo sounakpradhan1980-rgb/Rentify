@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rentify — Find your next rental</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:,">
+  <meta name="description" content="A simple static rent listing site (HTML/CSS/JS). Browse, search, filter and save favorite rentals.">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#">Rentify</a>
+      <nav class="nav">
+        <button id="favorites-toggle" class="btn small">Favorites (<span id="fav-count">0</span>)</button>
+        <button id="add-listing" class="btn small ghost">Add Listing</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Find your perfect rental</h1>
+        <p class="lead">Browse apartments, houses and rooms — filter by price, type and location.</p>
+
+        <div class="controls">
+          <input id="search" type="search" placeholder="Search by title or city" />
+          <select id="type-filter">
+            <option value="all">All types</option>
+            <option value="apartment">Apartment</option>
+            <option value="house">House</option>
+            <option value="room">Room</option>
+          </select>
+
+          <label class="price-range">
+            Max price:
+            <input id="price-range" type="range" min="5000" max="200000" value="80000" />
+            <span id="price-value">₹80000</span>
+          </label>
+
+          <select id="sort-by">
+            <option value="recommended">Recommended</option>
+            <option value="price-asc">Price: low → high</option>
+            <option value="price-desc">Price: high → low</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section class="container listings-section">
+      <div id="listings" class="grid" aria-live="polite"></div>
+
+      <div id="empty-state" class="empty" hidden>
+        <p>No properties found. Try changing filters.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Rentify • Built with HTML, CSS & JavaScript</p>
+      <p class="muted">This is a demo static site — all data is local in your browser.</p>
+    </div>
+  </footer>
+
+  <!-- Modal for property details -->
+  <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <div class="modal-panel" role="document" aria-labelledby="modal-title">
+      <button id="modal-close" class="modal-close" aria-label="Close">✕</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
